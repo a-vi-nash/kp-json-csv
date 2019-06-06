@@ -1,0 +1,15 @@
+{
+  "name": "csv-to-json",
+  "version": "1.0.0",
+  "description": "convert csv file to json",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "a-vi-nash",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "latest",
+    "json2csv": "^4.3.4"
+  }
+}
