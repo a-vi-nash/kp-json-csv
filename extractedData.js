@@ -33,11 +33,11 @@ let extractContent = answerArr =>{
           let contentType = item.content_type;
           let content = [];
           if(contentType == "text"){
-            content.push(item.content.value.replace(/\"/g,"'"));
+            content.push((item.content.value || "").replace(/\"/g,"'"));
           }
           else if(contentType == "card"){
-            content.push("title:"+item.card.title.value.replace(/\"/g,"'"));
-            content.push("description:"+item.card.description.value.replace(/\"/g,"'"));
+            content.push("title:"+(item.card.title.value || "").replace(/\"/g,"'"));
+            content.push("description:"+(item.card.description.value||"").replace(/\"/g,"'"));
             content.push("links:"+getCardLinks(item.card.links));
           }
           acc.push(content.join(" "));
@@ -54,8 +54,8 @@ let getCardLinks = links=>{
     return links.reduce((acc,item)=>{
         let linkData = [];
         linkData.push("type:"+item.type);
-        linkData.push("title:"+item.title.value.replace(/\"/g,"'"));
-        linkData.push("content:"+item.content.replace(/\"/g,"'"));
+        linkData.push("title:"+(item.title.value||"").replace(/\"/g,"'"));
+        linkData.push("content:"+(item.content||"").replace(/\"/g,"'"));
         acc.push(linkData.join(" "));
         return acc;
     },[]).join("\n");
